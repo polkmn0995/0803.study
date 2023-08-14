@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>button actions</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+      }
+      .txt1 {
+        width: 50px;
+        text-align: center;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="txt1">내용1</p>
+    <script>
+      $(function () {
+        $(".txt1")
+          .animate({ marginLeft: "500px" }, 1000)
+          .animate({ marginTop: "500px" }, 1000)
+          // .queue() 안에 있는 함수는 특정 작업들을 순서대로 실행
+          .queue(function () {
+            $(this).css({ "background-color": "red" });
+            // .dequeue() queue() 요소 안에서 제거하면서 다음 작업을 실행
+            $(this).dequeue();
+          })
+          .animate({ marginLeft: "0px" }, 1000)
+          .animate({ marginTop: "0px" }, 1000);
+      });
+    </script>
+  </body>
+</html>

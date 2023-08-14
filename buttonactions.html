@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>button actions</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+      }
+      .red {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btn">
+      <input type="button" value="append" class="append" />
+      <input type="button" value="remove" class="remove" />
+      <input type="button" value="show" class="show" />
+      <input type="button" value="hide" class="hide" />
+      <input type="button" value="toggle" class="toggle" />
+      <input type="button" value="fadein" class="fadein" />
+      <input type="button" value="fadeout" class="fadeout" />
+      <input type="button" value="fadetoggle" class="fadetoggle" />
+      <input type="button" value="addclass" class="addclass" />
+      <input type="button" value="removeclass" class="removeclass" />
+      <input type="button" value="toggleclass" class="toggleclass" />
+      <input type="button" value="slideup" class="slideup" />
+      <input type="button" value="slidedown" class="slidedown" />
+      <input type="button" value="slidetoggle" class="slidetoggle" />
+    </div>
+    <div class="content"></div>
+
+    <script>
+      $(function () {
+        $(".append").click(() => {
+          $(".content").append(`<div class="box"></div>`);
+          $(".box").last().css("background-color", makeColor());
+        });
+        function makeColor() {
+          const randomColor =
+            "#" + Math.round(Math.random() * 0xffffff).toString(16);
+          return randomColor;
+        }
+        $(".remove").click(() => {
+          $(".box").remove();
+        });
+        $(".show").click(() => {
+          $(".box").show();
+        });
+        $(".hide").click(() => {
+          $(".box").hide();
+        });
+        $(".toggle").click(() => {
+          $(".box").toggle();
+        });
+        $(".fadein").click(() => {
+          $(".box").fadeIn(300);
+        });
+        $(".fadeout").click(() => {
+          $(".box").fadeOut(300);
+        });
+        $(".fadetoggle").click(() => {
+          $(".box").fadeToggle(300);
+        });
+        $(".addclass").click(() => {
+          $(".box").addClass(".red");
+        });
+        $(".removeclass").click(() => {
+          $(".box").removeClass(".red");
+        });
+        $(".toggleclass").click(() => {
+          $(".box").toggleClass(".red");
+        });
+        $(".slideup").click(() => {
+          // $(".box:odd").slideUp();
+          // $(".box:even").slideUp();
+          $(".box").slideUp();
+        });
+        $(".slidedown").click(() => {
+          // $(".box:odd").slideDown();
+          // $(".box:even").slideDown();
+          $(".box").slideDown();
+        });
+        $(".slidetoggle").click(() => {
+          $(".content div").each(function (index, item) {
+            $(item).text(index);
+          });
+          // $(".box:odd").slideToggle();
+          // $(".box:even").slideToggle();
+          $(".box").slideToggle();
+        });
+      });
+    </script>
+  </body>
+</html>
